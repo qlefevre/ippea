@@ -1,0 +1,120 @@
+/* -- page -- */
+body {
+	font-family: "Helvetica Neue", Helvetica, "PingFang SC",
+		"Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+}
+
+h2 {
+	font-weight: normal;
+	font-size: 18px;
+}
+
+h3 {
+	font-weight: normal;
+	font-size: 13px;
+}
+
+.nav-icon {
+	font-size: 2rem;
+}
+
+.isin {
+	font-size: 13px;
+}
+
+.center {
+	text-align: center;
+}
+
+.el-tag {
+	border-radius: 0;
+	text-align: center;
+	border-style: none;
+	vertical-align: middle;
+}
+
+.el-tag.issuer {
+	width: 75px;
+}
+
+.el-tag.zone {
+	width: 85px;
+	color: white;
+	font-weight: 600;
+}
+
+.el-button.import-data {
+	margin-top: 10px;
+	color: white;
+	background-color: #3f3f3f;
+}
+
+.import-data i {
+	font-weight: bold;
+}
+
+/* -- issuer colors -- */
+.amundi {
+	color: white;
+	background-color: #13B0E9;
+}
+
+.amundi.issuer.el-tag {
+	font-weight: 800;
+}
+
+.lyxor {
+	color: #00106E;
+	background-color: #32D3D8;
+	text-transform: uppercase;
+}
+
+.lyxor.issuer.el-tag {
+	font-weight: 700;
+}
+
+/* -- etf colors -- */
+.etf {
+	color: white;
+}
+
+.msci-world {
+	background-color: #1395BA;
+}
+
+.msci-em {
+	background-color: #C02E1D;
+}
+
+.small-emu {
+	background-color: #F16C20;
+}
+
+.russel-2000 {
+	background-color: #EBC844;
+}
+
+/* -- stacked-bar -- */
+.stacked-bar {
+	display: table;
+	width: 100%;
+}
+
+.stacked-bar .bar {
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.stacked-bar .percent {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.stacked-bar .etf {
+	height: 80px;
+}
+
+.stacked-bar .issuer {
+	padding: 10px 0;
+}
