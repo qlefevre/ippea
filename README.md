@@ -5,6 +5,8 @@
 Site web : https://qlefevre.github.io/ippea/
 
 Ce petit projet permet de familiariser avec le framework [Vue.js](https://vuejs.org/)
+
 Librairies utilisées : 
  * [Element UI](https://element.eleme.io/)
  * [http-vue-loader](https://github.com/FranckFreiburger/http-vue-loader)
+ * [Papa Parse](https://www.papaparse.com/)
