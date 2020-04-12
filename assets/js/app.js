@@ -53,7 +53,7 @@ Papa.parsePromise = function(url) {
 	};
 
 function loadTickers(){
-	return Papa.parsePromise("/data/etf.csv")
+	return Papa.parsePromise("data/etf.csv")
 	.then(function(results){
 		let etfMap =new Map();
 		let nameMap =new Map();
