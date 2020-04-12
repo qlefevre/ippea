@@ -29,8 +29,8 @@
       label="ETF"
       width="250">
 	   <template slot-scope="scope">
-	  {{ scope.row.name }}<br>
-	  <span class="isin">{{ scope.row.isin }}</span>
+	  <a class="name" v-bind:href="scope.row.tickerUrl">{{ scope.row.name }}<br>
+	  <span class="isin">{{ scope.row.isin }} - {{ scope.row.ticker }}</span></a>
 	  </template>
     </el-table-column>
   

@@ -8,8 +8,7 @@
 <!-- JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.13.0/index.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script> -->
-<script src="assets/js/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
 <script src="assets/js/httpVueLoader.js"></script>
 
 </head>
@@ -48,64 +47,7 @@
 	</div>
 </body>
 
+<script src="assets/js/app.js"></script>
 
-<script>
-	new Vue(
-			{
-				el : '#app',
-
-				data : {
-					visible : false,
-					tabPosition : 'left',
-					target : [ {
-						name : 'MSCI World',
-						amount : 75
-					}, {
-						name : 'MSCI EM',
-						amount : 10
-					}, {
-						name : 'Russel 2000',
-						amount : 10
-					}, {
-						name : 'MSCI Small EMU',
-						amount : 5
-					} ],
-					portfolio : [ {
-
-						name : 'LYXOR MSCI WOR PEA',
-						isin : 'FR0011869353',
-						amount : 2400
-					}, {
-						name : 'AMUNDI PEA MSCI EM',
-						isin : 'FR0013412020',
-						amount : 600
-					} ],
-					inputData : ""
-
-				},
-				methods : {
-					formatCurrency : function(value) {
-						return currencyformatter.format(value);
-					},
-					importData : function(event) {
-						this.portfolio = extractLines(this.inputData);
-					}
-				},
-				computed : {
-					computedTarget : function() {
-						return createPortfolioFromArray(this.target);
-					},
-					computedPortfolio : function() {
-						return createPortfolioFromArray(this.portfolio);
-					}
-				},
-				components : {
-					'portfolio-table' : httpVueLoader('components/portfolio-table.vue'),
-					'issuers-chart' : httpVueLoader('components/issuers-chart.vue'),
-					'etfs-chart' : httpVueLoader('components/etfs-chart.vue')
-				}
-
-			});
-</script>
 
 </html>

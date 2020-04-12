@@ -43,6 +43,11 @@ h3 {
 	font-weight: 600;
 }
 
+a.name {
+	text-decoration: none;
+	color: #606266;
+}
+
 .el-button.import-data {
 	margin-top: 10px;
 	color: white;
