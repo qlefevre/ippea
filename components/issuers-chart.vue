@@ -14,18 +14,32 @@
 		},
 		computed:{
 		  issuers:function(){
-		  var issuers = [];
+		  
+		  let issuersMap =new Map();
 		  this.portfolio.etfs.forEach(row => {
 	
-		    var issuer = {};
-			issuer.name = row.issuer;
+		    var issuer = issuersMap.get(row.issuer);
+			var name = row.issuer;
+			if(issuer == undefined){
+				issuer = {};
+				issuer.amount = 0;
+				issuersMap.set(name, issuer);
+			}
+			issuer.name = name;
 			issuer.class = row.issuerClass;
-			issuer.percent = Math.round(( row.amount / this.portfolio.totalAmount) *100);
-			issuers.push(issuer);
-		   });
+			issuer.amount += row.amount;
+			issuer.percent = Math.round(( issuer.amount / this.portfolio.totalAmount) *100);
+			});
+			
+
+			var issuers = [];
+			for (var issuerValue of issuersMap.values()) {
+				issuers.push(issuerValue);
+			}
+
 			return issuers;
-		  }
-	  }
+			}
+		}
 	}
 </script>
 

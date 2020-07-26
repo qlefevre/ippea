@@ -21,26 +21,30 @@ function extractLines(pData) {
 	// On remplace les virgules par des points
 	sanitizeData = sanitizeData.replace(/,/g, '.');
 	// Boursorama type compte : on supprime les 'AV'
-	sanitizeData = sanitizeData.replace('NOTIFICATION AV','AV').replace(/% AV/g, '% ');
+	//sanitizeData = sanitizeData.replace('NOTIFICATION AV','AV').replace(/% AV/g, '% ');
 	// On garde les nombres et les lettres
 	sanitizeData = sanitizeData.replace(/[^0-9A-Z. %]/g, '');
 	
 	// On découpe selon le caractère %
-	let rawBlocks = sanitizeData.split('%');
+	let rawBlocks = sanitizeData.split(' AV ');
 	// On filtre les block ayant MSCI dans le nom
-	let etfBlocks = rawBlocks.filter(rawBlock => rawBlock.includes('MSCI'));
+	//let etfBlocks = rawBlocks.filter(rawBlock => rawBlock.includes('MSCI'));
+
+	let etfBlocks = rawBlocks.filter(rawBlock => !rawBlock.includes('LATENTES'));
 	
 	// On récupère les info pour chaque block
 	let portfolio = etfBlocks.map(etfBlock => {
-		let line = etfBlock.replace(/([A-Z]{2})([0-9]{10})/g, '').trim();
-		let name = line.replace(/[^A-Z ]/g, '').trim();
+		//let line = etfBlock.replace(/([A-Z]{2})([0-9]{10})/g, '').trim();
+		let name = etfBlock.match(/([A-Z0-9 ]*[A-Z]+)/g)[0].trim();
 		let isin = extractIsin(etfBlock,name);
-		let numbers = line.replace(/[^0-9. ]/g, '').replace(/\s+/g, ' ').trim().split(' ');
+		let numbers = etfBlock.substring(etfBlock.lastIndexOf(isin)+ 12).replace(/[^0-9. ]/g, '').replace(/\s+/g, ' ').trim().split(' ');
 		let amount = parseFloat((parseFloat(numbers[0])*parseFloat(numbers[2])).toFixed(2));
+		let issuer = extractIssuer(name,isin);
 		let etf = {
 			name : name,
 			isin : isin,
-			amount : amount
+			amount : amount,
+			issuer : issuer
 		};
 		return etf;
 	});
@@ -68,7 +72,9 @@ function loadTickers(){
 		}
 		ETF_CACHE = etfMap;
 		NAME_CACHE = nameMap;
+		console.log('loadTickers()');
 	});
+	
 }
 
 function extractIsin(line,name){
@@ -84,14 +90,20 @@ function extractIsin(line,name){
 	return isin;
 }
 
+function extractIssuer(name,isin){
+	let etf = ETF_CACHE.get(isin);
+	let issuer = etf == undefined ? 'issuer'  : etf.issuer;
+	return issuer;
+}
+
 function computedRow(etf) {
 	etf.zone = zone(etf.name);
 	etf.zoneDescription = zoneDescription(etf.zone);
-	etf.zoneClass = etf.zone.toLowerCase().split(' ').join('-');
+	etf.zoneClass = etf.zone.toLowerCase().replace('&','').split(' ').join('-');
 	if(etf.isin != undefined){
 		etfData = ETF_CACHE.get(etf.isin);
 		etf.issuer = etfData.issuer;
-		etf.issuerClass = etf.issuer.toLowerCase();
+		etf.issuerClass = etf.issuer.toLowerCase().replace(' ','-');
 		etf.ticker = etfData.ticker;
 		etf.tickerUrl = 'https://www.boursorama.com/bourse/trackers/cours/1rT'+etf.ticker+'/';
 	}
@@ -107,6 +119,12 @@ function zone(name) {
 		return 'Russel 2000';
 	if (nameUpperCase.includes('SMALL EMU'))
 		return 'Small EMU';
+	if (nameUpperCase.includes('SP500'))
+		return 'S&P 500';
+	if (nameUpperCase.includes('STOXX 600'))
+		return 'STOXX 600';
+	if (nameUpperCase.includes('TOPIX'))
+		return 'TOPIX';
 	return 'Autre';
 }
 
@@ -119,6 +137,12 @@ function zoneDescription(zone) {
 		return 'Russel 2000';
 	if (zone === 'Small EMU')
 		return 'MSCI Small EMU';
+	if (zone === 'S&P 500')
+		return 'S&P 500';
+	if (zone === 'STOXX 600')
+		return 'STOXX Europe 600';
+	if (zone === 'TOPIX')
+		return 'Topix';
 	return 'Autre';
 }
 
@@ -140,6 +164,8 @@ function createPortfolioFromArray(etfs){
 }
 
 function loadVue(){
+	let test = ETF_CACHE.get('FR0013412020');
+	console.log('loadVue()');
 new Vue(
 		{
 			el : '#app',

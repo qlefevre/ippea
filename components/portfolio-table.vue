@@ -6,9 +6,9 @@
 	  <el-table-column
       prop="issuer"
       label="Émetteur"
-      width="100">
+      width="110">
 	  <template slot-scope="scope">
-            <el-tag size="medium" class="issuer" v-bind:class="scope.row.issuer.toLowerCase()">{{ scope.row.issuer }}</el-tag>
+            <el-tag size="medium" class="issuer" v-bind:class="scope.row.issuerClass">{{ scope.row.issuer }}</el-tag>
       </template>
 	  </el-table-column>
 	  <el-table-column

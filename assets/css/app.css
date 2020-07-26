@@ -34,7 +34,7 @@ h3 {
 }
 
 .el-tag.issuer {
-	width: 75px;
+	width: 100px;
 }
 
 .el-tag.zone {
@@ -78,6 +78,15 @@ a.name {
 	font-weight: 700;
 }
 
+.bnp-paribas {
+	color: white;
+	background-color: #00915A;
+}
+
+.bnp-paribas.issuer.el-tag {
+	font-weight: 700;
+}
+
 /* -- etf colors -- */
 .etf {
 	color: white;
@@ -98,6 +107,25 @@ a.name {
 .russel-2000 {
 	background-color: #EBC844;
 }
+
+.sp-500 {
+	background-color: #00915A;
+}
+
+.stoxx-600 {
+	background-color: #0033CC;
+}
+
+.topix {
+	background-color: #DB5A6B;
+}
+
+
+
+.autre {
+	background-color: #EBC844;
+}
+
 
 /* -- stacked-bar -- */
 .stacked-bar {
