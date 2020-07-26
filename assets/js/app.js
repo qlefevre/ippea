@@ -125,6 +125,8 @@ function zone(name) {
 		return 'STOXX 600';
 	if (nameUpperCase.includes('TOPIX'))
 		return 'TOPIX';
+	if (nameUpperCase.includes('ASIP'))
+		return 'MSCI AP';
 	return 'Autre';
 }
 
@@ -143,6 +145,8 @@ function zoneDescription(zone) {
 		return 'STOXX Europe 600';
 	if (zone === 'TOPIX')
 		return 'Topix';
+	if (zone === 'MSCI AP')
+		return 'MSCI AC Asia Pacific';
 	return 'Autre';
 }
 
