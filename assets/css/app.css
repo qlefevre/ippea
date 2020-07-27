@@ -80,7 +80,7 @@ a.name {
 
 .bnp-paribas {
 	color: white;
-	background-color: #00915A;
+	background-color: #029058;
 }
 
 .bnp-paribas.issuer.el-tag {
@@ -97,30 +97,32 @@ a.name {
 }
 
 .msci-em {
-	background-color: #C02E1D;
+	background-color: #E82B35;
 }
 
 .small-emu {
-	background-color: #F16C20;
+	background-color: #FEC30F;
 }
 
 .russel-2000 {
-	background-color: #EBC844;
+	background-color: #F38919;
 }
 
 .sp-500 {
-	background-color: #00915A;
+	background-color: #029058;
 }
 
 .stoxx-600 {
-	background-color: #0033CC;
+	background-color: #0072B8;
 }
 
 .topix {
-	background-color: #DB5A6B;
+	background-color: #79398F;
 }
 
-
+.msci-ap {
+	background-color: #E61082;
+}
 
 .autre {
 	background-color: #EBC844;

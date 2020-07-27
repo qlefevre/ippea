@@ -109,6 +109,13 @@ function computedRow(etf) {
 	}
 }
 
+function sortEtfsArray(etfsArray){
+	var reference_array = ['MSCI World', 'S&P 500', 'STOXX 600', 'TOPIX', 'MSCI AP','MSCI EM','Russel 2000','Small EMU'];
+	etfsArray.sort(function(a, b) {
+		return reference_array.indexOf(a.zone) - reference_array.indexOf(b.zone);
+	});
+}
+
 function zone(name) {
 	var nameUpperCase = name.toUpperCase();
 	if (nameUpperCase.includes('MSCI WOR'))
@@ -161,6 +168,7 @@ function createPortfolioFromArray(etfs){
 		computedEtfs.push(etf);
 		
 	}
+	sortEtfsArray(computedEtfs);
 	return {
   	  totalAmount: totalAmount ,
 	  etfs:computedEtfs
