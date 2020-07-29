@@ -72,7 +72,6 @@ function loadTickers(){
 		}
 		ETF_CACHE = etfMap;
 		NAME_CACHE = nameMap;
-		console.log('loadTickers()');
 	});
 	
 }
@@ -102,10 +101,12 @@ function computedRow(etf) {
 	etf.zoneClass = etf.zone.toLowerCase().replace('&','').split(' ').join('-');
 	if(etf.isin != undefined){
 		etfData = ETF_CACHE.get(etf.isin);
-		etf.issuer = etfData.issuer;
-		etf.issuerClass = etf.issuer.toLowerCase().replace(' ','-');
-		etf.ticker = etfData.ticker;
-		etf.tickerUrl = 'https://www.boursorama.com/bourse/trackers/cours/1rT'+etf.ticker+'/';
+		if(etfData != undefined){
+			etf.issuer = etfData.issuer;
+			etf.issuerClass = etf.issuer.toLowerCase().replace(' ','-');
+			etf.ticker = etfData.ticker;
+			etf.tickerUrl = 'https://www.boursorama.com/bourse/trackers/cours/1rT'+etf.ticker+'/';
+		}
 	}
 }
 
@@ -164,20 +165,19 @@ function createPortfolioFromArray(etfs){
 	for (let i = 0; i < etfs.length; i++) {
 		let etf = Object.assign({},etfs[i]);
 		computedRow(etf);
-		totalAmount += etf.amount;
-		computedEtfs.push(etf);
-		
+		if(ETF_CACHE.get(etf.isin) != undefined){
+			totalAmount += etf.amount;
+			computedEtfs.push(etf);
+		}
 	}
 	sortEtfsArray(computedEtfs);
 	return {
-  	  totalAmount: totalAmount ,
-	  etfs:computedEtfs
-	  };
+		totalAmount: totalAmount ,
+		etfs:computedEtfs
+	};
 }
 
 function loadVue(){
-	let test = ETF_CACHE.get('FR0013412020');
-	console.log('loadVue()');
 new Vue(
 		{
 			el : '#app',
@@ -185,6 +185,7 @@ new Vue(
 			data : {
 				visible : false,
 				tabPosition : 'left',
+				selectedTab : 'main',
 				target : [ {
 					name : 'MSCI World',
 					amount : 75
@@ -217,6 +218,7 @@ new Vue(
 				},
 				importData : function(event) {
 					this.portfolio = extractLines(this.inputData);
+					this.selectedTab='main';
 				}
 			},
 			computed : {
