@@ -17,7 +17,7 @@
 	<div id="app">
 
 		<!-- style="height: 100vh;" -->
-		<template> <el-tabs :tab-position="tabPosition" :value="selectedTab" > <el-tab-pane name="main"> <span
+		<template> <el-tabs :tab-position="tabPosition" v-model="selectedTab" > <el-tab-pane name="main"> <span
 			slot="label"><i class="nav-icon el-icon-s-finance"></i></span>
 		<h1>
 			Portefeuille ETF
@@ -42,7 +42,7 @@
 				v-model="inputData"> </el-input>
 			<el-button class="import-data" @click="importData"><i class="el-icon-upload2"></i> Importer les
 			lignes d'ETF</el-button>
-		</el-tab-pane> </el-tabs> </template>
+		</el-tab-pane name="import"> </el-tabs> </template>
 
 	</div>
 </body>
