@@ -36,7 +36,8 @@
   
     <el-table-column
       prop="amount"
-      label="Montant">
+      label="Montant" 
+      width="80">
 	  
 	    <template slot-scope="scope">
 	  {{ formatCurrency(scope.row.amount) }}
@@ -44,7 +45,8 @@
     </el-table-column>
     <el-table-column
       prop="netassetvalue"
-      label="VL">
+      label="VL"
+      width="80">
 	  
 	    <template slot-scope="scope">
 	  {{ formatCurrency(scope.row.netassetvalue) }}
