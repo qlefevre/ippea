@@ -42,6 +42,14 @@
 	  {{ formatCurrency(scope.row.amount) }}
 	  </template>
     </el-table-column>
+    <el-table-column
+      prop="netassetvalue"
+      label="VL">
+	  
+	    <template slot-scope="scope">
+	  {{ formatCurrency(scope.row.netassetvalue) }}
+	  </template>
+    </el-table-column>
   </el-table>
 
 </template>
