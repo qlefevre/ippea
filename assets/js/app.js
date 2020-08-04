@@ -38,13 +38,15 @@ function extractLines(pData) {
 		let name = etfBlock.match(/([A-Z0-9 ]*[A-Z]+)/g)[0].trim();
 		let isin = extractIsin(etfBlock,name);
 		let numbers = etfBlock.substring(etfBlock.lastIndexOf(isin)+ 12).replace(/[^0-9. ]/g, '').replace(/\s+/g, ' ').trim().split(' ');
-		let amount = parseFloat((parseFloat(numbers[0])*parseFloat(numbers[2])).toFixed(2));
+		let netassetvalue = parseFloat(numbers[2]);
+		let amount = parseFloat(parseFloat(numbers[0])*netassetvalue).toFixed(2));
 		let issuer = extractIssuer(name,isin);
 		let etf = {
 			name : name,
 			isin : isin,
 			amount : amount,
-			issuer : issuer
+			issuer : issuer,
+			netassetvalue : netassetvalue,
 		};
 		return etf;
 	});
