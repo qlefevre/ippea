@@ -137,7 +137,7 @@ function zone(name) {
 		return 'TOPIX';
 	if (nameUpperCase.includes('ASIP'))
 		return 'MSCI AP';
-	return 'Autre';
+	return name;
 }
 
 function zoneDescription(zone) {
@@ -188,7 +188,10 @@ new Vue(
 				visible : false,
 				tabPosition : 'left',
 				selectedTab : 'main',
-				target : [ {
+				selectedTarget : 'NALO',
+				targetportfolio :{
+					"ACWI IMI" : 
+					[ {
 					name : 'MSCI World',
 					amount : 75
 				}, {
@@ -201,6 +204,26 @@ new Vue(
 					name : 'MSCI Small EMU',
 					amount : 5
 				} ],
+				"NALO" : 
+					[ {
+					name : 'S&P 500',
+					amount : 13
+				}, {
+					name : 'STOXX 600',
+					amount : 32
+				}, {
+					name : 'TOPIX',
+					amount : 16
+				}, {
+					name : 'MSCI AP',
+					amount : 16
+				}, {
+					name : 'MSCI EM',
+					amount : 23
+				}]
+				
+				
+				},
 				portfolio : [ {
 
 					name : 'LYXOR MSCI WOR PEA',
@@ -227,7 +250,7 @@ new Vue(
 			},
 			computed : {
 				computedTarget : function() {
-					return createPortfolioFromArray(this.target);
+					return createPortfolioFromArray(this.targetportfolio[this.selectedTarget]);
 				},
 				computedPortfolio : function() {
 					return createPortfolioFromArray(this.portfolio);
