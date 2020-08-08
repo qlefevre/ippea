@@ -31,7 +31,8 @@
 			<h2>PEA d'un montant de
 				{{formatCurrency(computedPortfolio.totalAmount)}} répartis sur
 				{{computedPortfolio.etfs.length}} ETF</h2>
-			<portfolio-table v-bind:portfolio="computedPortfolio"></portfolio-table>
+			<p>Versement <el-input placeholder="Versement" size="small" class="payment" v-model="payment"></el-input></p>
+			<portfolio-table v-bind:portfolio="computedPortfolio" v-bind:target="computedTarget" v-bind:payment="payment" ></portfolio-table>
 		</el-tab-pane> <el-tab-pane> <span slot="label"><i
 			class="nav-icon el-icon-s-tools"></i></span>
 		<h1>

@@ -58,6 +58,10 @@ a.name {
 	font-weight: bold;
 }
 
+.el-input.payment {
+	width: 100px;
+}
+
 /* -- issuer colors -- */
 .amundi {
 	color: white;

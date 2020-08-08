@@ -189,6 +189,7 @@ new Vue(
 				tabPosition : 'left',
 				selectedTab : 'main',
 				selectedTarget : 'NALO',
+				payment:200,
 				targetportfolio :{
 					"ACWI IMI" : 
 					[ {
