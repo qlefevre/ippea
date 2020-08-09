@@ -226,16 +226,15 @@ new Vue(
 				
 				},
 				portfolio : [ {
-
 					name : 'LYXOR MSCI WOR PEA',
 					isin : 'FR0011869353',
 					amount : 2400,
-					netassetvalue : 0
+					netassetvalue : 18.08
 				}, {
 					name : 'AMUNDI PEA MSCI EM',
 					isin : 'FR0013412020',
 					amount : 600,
-					netassetvalue : 0
+					netassetvalue : 19.70
 				} ],
 				inputData : ""
 
