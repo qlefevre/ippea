@@ -244,7 +244,8 @@ new Vue(
 					return currencyformatter.format(value);
 				},
 				importData : function(event) {
-					this.portfolio = extractLines(this.inputData);
+					this.portfolio.length = 0;
+					this.portfolio.concat(extractLines(this.inputData));
 					this.selectedTab='main';
 				}
 			},
