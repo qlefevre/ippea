@@ -105,7 +105,7 @@ module.exports = {
     },
     computed: {
         targetTotalAmount: function() {
-            return this.portfolio.totalAmount + this.payment
+            return this.portfolio.totalAmount + parseFloat(this.payment);
         },
         etfs: function() {
             var etfs = [];
