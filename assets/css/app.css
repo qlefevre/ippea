@@ -58,8 +58,10 @@ a.name {
 	font-weight: bold;
 }
 
-.el-input.payment {
-	width: 100px;
+p.payment {
+	width: 500px;
+    display: inline;
+	vertical-align: middle;
 }
 
 /* -- issuer colors -- */
