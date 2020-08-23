@@ -74,6 +74,14 @@
 			 {{ scope.row.targetpercent }}%
 		  </template>
 	   </el-table-column>
+	   <el-table-column
+		  prop="buyunitpayment"
+		  label="Versement Cible"
+		  width="100">
+		  <template slot-scope="scope">
+			 {{ scope.row.buyunitpayment }}
+		  </template>
+	   </el-table-column>
 	</el-table>
 
 </template>
@@ -117,6 +125,7 @@ module.exports = {
                 etf.targetBuyunit = parseFloat(delta / row.netassetvalue).toFixed(2);
                 etf.buyunit = Math.round(etf.targetBuyunit);
                 etf.buyunit = etf.buyunit <= 0 ? 0 : etf.buyunit;
+				etf.buyunitpayment = Math.floor(this.payment*percent/row.netassetvalue);
                 newTargetTotalAmount += etf.buyunit * etf.netassetvalue;
                 etfs.push(etf);
             });
