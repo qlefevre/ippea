@@ -2,9 +2,9 @@
 
 **IPPEA** est un outil d'aide à la décision suivant la méthode de la [gestion passive](https://fr.wikipedia.org/wiki/Gestion_passive)
 
-Site web : https://qlefevre.github.io/ippea/
+Site web : https://qlefevre.github.io/ippea-vuejs/
 
-Ce petit projet permet de familiariser avec le framework [Vue.js](https://vuejs.org/)
+Ce petit projet permet de se familiariser avec le framework [Vue.js](https://vuejs.org/)
 
 Librairies utilisées : 
  * [Element UI](https://element.eleme.io/)
